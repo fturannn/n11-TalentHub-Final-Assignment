@@ -31,6 +31,12 @@ public class User {
     @Column(name = "SURNAME", nullable = false, length = 100)
     private String surname;
 
+    @Column(name = "LATITUDE", nullable = false)
+    private double latitude;
+
+    @Column(name = "LONGITUDE", nullable = false)
+    private double longitude;
+
     @Column(name = "BIRTH_DATE")
     private LocalDate birthDate;
 
@@ -52,4 +58,6 @@ public class User {
     @Column(name = "STATUS", nullable = false, length = 30)
     private EnumStatus status;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<UserReview> userReviews;
 }
