@@ -31,6 +31,15 @@ public class User {
     @Column(name = "SURNAME", nullable = false, length = 100)
     private String surname;
 
+    @Column(name = "COUNTRY", nullable = false, length = 100)
+    private String country;
+
+    @Column(name = "CITY", nullable = false, length = 100)
+    private String city;
+
+    @Column(name = "DISTRICT", nullable = false, length = 100)
+    private String district;
+
     @Column(name = "LATITUDE", nullable = false)
     private double latitude;
 
