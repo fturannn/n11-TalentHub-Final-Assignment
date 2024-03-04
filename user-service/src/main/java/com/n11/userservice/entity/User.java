@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 public class User {
     @SequenceGenerator(name = "User", sequenceName = "USER_ID_SEQ", allocationSize = 1)
     @Id

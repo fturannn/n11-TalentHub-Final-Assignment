@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "REVIEW")
+@Table(name = "REVIEWS")
 public class UserReview {
     @SequenceGenerator(name = "UserReview", sequenceName = "USER_REVIEW_ID_SEQ", allocationSize = 1)
     @Id
