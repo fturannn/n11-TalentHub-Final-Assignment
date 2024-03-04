@@ -37,7 +37,4 @@ public class UserReview {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "SCORE", nullable = false)
     private EnumScore score;
-
-    @Column(name = "LIKE_COUNT", columnDefinition = "integer default 0")
-    private int likeCount;
 }
