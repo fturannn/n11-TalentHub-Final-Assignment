@@ -2,6 +2,7 @@ package com.n11.userservice.entity;
 
 import com.n11.userservice.enums.EnumGender;
 import com.n11.userservice.enums.EnumStatus;
+import com.n11.userservice.general.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User extends BaseEntity {
     @SequenceGenerator(name = "User", sequenceName = "USER_ID_SEQ", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "User")

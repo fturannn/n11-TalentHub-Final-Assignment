@@ -1,6 +1,7 @@
 package com.n11.userservice.entity;
 
 import com.n11.userservice.enums.EnumScore;
+import com.n11.userservice.general.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "REVIEWS")
-public class UserReview {
+public class UserReview extends BaseEntity {
     @SequenceGenerator(name = "UserReview", sequenceName = "USER_REVIEW_ID_SEQ", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserReview")
