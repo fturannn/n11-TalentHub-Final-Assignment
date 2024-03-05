@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -66,6 +65,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false, length = 30)
     private EnumStatus status;
+
+    @Column(name = "REVIEW_COUNT", columnDefinition = "integer default 0")
+    private int reviewCount;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<UserReview> userReviews;
