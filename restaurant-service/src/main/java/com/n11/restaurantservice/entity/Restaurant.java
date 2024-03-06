@@ -58,7 +58,7 @@ public class Restaurant extends BaseEntity {
     @Column(name = "FEATURES")
     private List<EnumFeatureType> features;
 
-    @Column(name = "AVERAGE_RATING", nullable = false)
+    @Column(name = "AVERAGE_RATING")
     private double averageRating;
 
     @Column(name = "DESCRIPTION", length = 500)
