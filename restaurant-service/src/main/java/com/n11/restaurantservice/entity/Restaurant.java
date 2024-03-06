@@ -1,6 +1,7 @@
 package com.n11.restaurantservice.entity;
 
 import com.n11.restaurantservice.enums.EnumCuisineType;
+import com.n11.restaurantservice.enums.EnumFeatureType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -52,12 +54,8 @@ public class Restaurant {
     @Column(name = "CUISINE_TYPE", length = 30, nullable = false)
     private EnumCuisineType cuisineType;
 
-    @ManyToMany
-    @JoinTable(
-            name = "FEATURES",
-            joinColumns = @JoinColumn(name = "RESTAURANT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "FEATURE_ID"))
-    private Set<Feature> features;
+    @Column(name = "FEATURES")
+    private List<EnumFeatureType> features;
 
     @Column(name = "AVERAGE_RATING", nullable = false)
     private double averageRating;

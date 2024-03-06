@@ -1,11 +1,10 @@
 package com.n11.restaurantservice.dto;
 
-import com.n11.restaurantservice.entity.Feature;
 import com.n11.restaurantservice.enums.EnumCuisineType;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+import com.n11.restaurantservice.enums.EnumFeatureType;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 public record RestaurantDTO(Long id,
@@ -18,7 +17,7 @@ public record RestaurantDTO(Long id,
                             LocalTime openingHour,
                             LocalTime closingHour,
                             EnumCuisineType cuisineType,
-                            Set<Feature> features,
+                            List<EnumFeatureType> features,
                             double averageRating,
                             String description) {
 }
