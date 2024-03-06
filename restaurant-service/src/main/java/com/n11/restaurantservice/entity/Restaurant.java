@@ -2,6 +2,7 @@ package com.n11.restaurantservice.entity;
 
 import com.n11.restaurantservice.enums.EnumCuisineType;
 import com.n11.restaurantservice.enums.EnumFeatureType;
+import com.n11.restaurantservice.general.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "RESTAURANTS")
-public class Restaurant {
+public class Restaurant extends BaseEntity {
     @SequenceGenerator(name = "Restaurant", sequenceName = "RESTAURANT_ID_SEQ", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Restaurant")
