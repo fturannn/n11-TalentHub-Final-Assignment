@@ -1,5 +1,6 @@
 package com.n11.userservice.controller.contract.impl;
 
+import com.n11.userservice.client.RestaurantServiceClient;
 import com.n11.userservice.controller.contract.UserReviewControllerContract;
 import com.n11.userservice.dto.UserReviewDTO;
 import com.n11.userservice.entity.UserReview;
@@ -22,6 +23,7 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
 
     private final UserReviewEntityService userReviewEntityService;
     private final UserEntityService userEntityService;
+    private final RestaurantServiceClient restaurantServiceClient;
 
     @Override
     public UserReviewDTO getById(Long id) {
@@ -44,6 +46,9 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
         userReview.setReviewDate(LocalDateTime.now());
         userReview.setUser(userEntityService.findByIdWithControl(request.user().getId()));
         userReview.getUser().setReviewCount(userReview.getUser().getReviewCount() + 1);
+
+        restaurantServiceClient.updateAverageRatingAndTotalReviewNumber(userReview.getRestaurantId()
+                , request.score().getValue());
 
         userReview = userReviewEntityService.save(userReview);
 
