@@ -14,6 +14,7 @@ public record UserSaveRequest(String name,
                               double longitude,
                               LocalDate birthDate,
                               String email,
+                              String phoneNumber,
                               EnumGender gender,
                               String photoUrl) {
 }

@@ -21,8 +21,8 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         String message = e.getMessage();
         String description = request.getDescription(false);
 
-        var generalErrorMessage = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
-        var restResponse = RestResponse.error(generalErrorMessage);
+        var generalErrorMessageFormat = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
+        var restResponse = RestResponse.error(generalErrorMessageFormat);
 
         return new ResponseEntity<>(restResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -33,8 +33,8 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         String message = e.getBaseErrorMessage().getMessage();
         String description = request.getDescription(false);
 
-        var generalErrorMessage = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
-        var restResponse = RestResponse.error(generalErrorMessage);
+        var generalErrorMessageFormat = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
+        var restResponse = RestResponse.error(generalErrorMessageFormat);
 
         return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
     }
@@ -45,8 +45,8 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         String message = e.getBaseErrorMessage().getMessage();
         String description = request.getDescription(false);
 
-        var generalErrorMessage = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
-        var restResponse = RestResponse.error(generalErrorMessage);
+        var generalErrorMessageFormat = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
+        var restResponse = RestResponse.error(generalErrorMessageFormat);
 
         return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
     }

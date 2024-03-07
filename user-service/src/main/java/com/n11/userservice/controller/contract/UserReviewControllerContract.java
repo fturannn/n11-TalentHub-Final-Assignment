@@ -13,4 +13,6 @@ public interface UserReviewControllerContract {
     UserReviewDTO save(UserReviewSaveRequest request);
     UserReviewDTO update(Long id, UserReviewUpdateRequest request);
     void delete(Long id);
+    List<UserReviewDTO> getReviewsByUserName(String name);
+    List<UserReviewDTO> getReviewsByUserId(Long id);
 }

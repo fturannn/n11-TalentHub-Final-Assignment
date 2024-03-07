@@ -13,4 +13,6 @@ public interface UserControllerContract {
     UserDTO save(UserSaveRequest request);
     UserDTO update(Long id, UserUpdateRequest request);
     void delete(Long id);
+    UserDTO activate(Long id);
+    UserDTO deactivate(Long id);
 }

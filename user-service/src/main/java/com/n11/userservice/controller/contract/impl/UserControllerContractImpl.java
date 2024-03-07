@@ -41,6 +41,10 @@ public class UserControllerContractImpl implements UserControllerContract {
                 stream()
                 .filter(user -> user.getStatus() == EnumStatus.ACTIVE).toList();
 
+        if(activeUserList.isEmpty()) {
+            throw new AppBusinessException(UserErrorMessage.NO_ACTIVE_USERS);
+        }
+
         return UserMapper.INSTANCE.convertToUserDTOs(activeUserList);
     }
 
@@ -76,4 +80,34 @@ public class UserControllerContractImpl implements UserControllerContract {
 
         userEntityService.delete(user);
     }
+
+    @Override
+    public UserDTO activate(Long id) {
+        User user = userEntityService.findByIdWithControl(id);
+
+        if(user.getStatus() == EnumStatus.ACTIVE) {
+            throw new AppBusinessException(UserErrorMessage.USER_IS_ALREADY_ACTIVE);
+        }
+
+        user.setStatus(EnumStatus.ACTIVE);
+        user = userEntityService.save(user);
+
+        return UserMapper.INSTANCE.convertToUserDTO(user);
+    }
+
+    @Override
+    public UserDTO deactivate(Long id) {
+        User user = userEntityService.findByIdWithControl(id);
+
+        if(user.getStatus() == EnumStatus.PASSIVE) {
+            throw new AppBusinessException(UserErrorMessage.USER_IS_ALREADY_PASSIVE);
+        }
+
+        user.setStatus(EnumStatus.PASSIVE);
+        user = userEntityService.save(user);
+
+        return UserMapper.INSTANCE.convertToUserDTO(user);
+    }
+
+
 }

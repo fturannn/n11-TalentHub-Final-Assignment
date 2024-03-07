@@ -47,4 +47,16 @@ public class UserReviewController {
     public void deleteReview(@PathVariable Long id) {
         userReviewControllerContract.delete(id);
     }
+
+    @GetMapping("/with-user-name")
+    public ResponseEntity<RestResponse<List<UserReviewDTO>>> getReviewsByUserName(@RequestParam String name) {
+        List<UserReviewDTO> userReviewDTOS = userReviewControllerContract.getReviewsByUserName(name);
+        return ResponseEntity.ok(RestResponse.of(userReviewDTOS));
+    }
+
+    @GetMapping("/with-user-id/{userId}")
+    public ResponseEntity<RestResponse<List<UserReviewDTO>>> getReviewsByUserId(@PathVariable Long userId) {
+        List<UserReviewDTO> userReviewDTOS = userReviewControllerContract.getReviewsByUserId(userId);
+        return ResponseEntity.ok(RestResponse.of(userReviewDTOS));
+    }
 }

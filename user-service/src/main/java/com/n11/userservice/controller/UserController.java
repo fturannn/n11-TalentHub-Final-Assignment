@@ -47,4 +47,16 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userControllerContract.delete(id);
     }
+
+    @PatchMapping("/{id}/activate")
+    public ResponseEntity<RestResponse<UserDTO>> activateUser(@PathVariable Long id) {
+        UserDTO userDTO = userControllerContract.activate(id);
+        return ResponseEntity.ok(RestResponse.of(userDTO));
+    }
+
+    @PatchMapping("/{id}/deactivate")
+    public ResponseEntity<RestResponse<UserDTO>> deactivateUser(@PathVariable Long id) {
+        UserDTO userDTO = userControllerContract.deactivate(id);
+        return ResponseEntity.ok(RestResponse.of(userDTO));
+    }
 }

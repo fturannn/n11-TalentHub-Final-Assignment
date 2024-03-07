@@ -5,5 +5,6 @@ public record UserDTO(Long id,
                       String surname,
                       String country,
                       String city,
-                      String district) {
+                      String district,
+                      int reviewCount) {
 }

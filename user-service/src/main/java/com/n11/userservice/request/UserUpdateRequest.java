@@ -15,6 +15,7 @@ public record UserUpdateRequest(Long id,
                                 double longitude,
                                 LocalDate birthDate,
                                 String email,
+                                String phoneNumber,
                                 EnumGender gender,
                                 String photoUrl,
                                 EnumStatus status) {

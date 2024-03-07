@@ -3,13 +3,17 @@ package com.n11.userservice.controller.contract.impl;
 import com.n11.userservice.controller.contract.UserReviewControllerContract;
 import com.n11.userservice.dto.UserReviewDTO;
 import com.n11.userservice.entity.UserReview;
+import com.n11.userservice.errormessage.UserReviewErrorMessage;
+import com.n11.userservice.general.AppBusinessException;
 import com.n11.userservice.mapper.UserReviewMapper;
 import com.n11.userservice.request.UserReviewSaveRequest;
 import com.n11.userservice.request.UserReviewUpdateRequest;
+import com.n11.userservice.service.UserEntityService;
 import com.n11.userservice.service.UserReviewEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -17,6 +21,8 @@ import java.util.List;
 public class UserReviewControllerContractImpl implements UserReviewControllerContract {
 
     private final UserReviewEntityService userReviewEntityService;
+    private final UserEntityService userEntityService;
+
     @Override
     public UserReviewDTO getById(Long id) {
         UserReview userReview = userReviewEntityService.findByIdWithControl(id);
@@ -34,6 +40,10 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
     @Override
     public UserReviewDTO save(UserReviewSaveRequest request) {
         UserReview userReview = UserReviewMapper.INSTANCE.convertToUserReview(request);
+
+        userReview.setReviewDate(LocalDateTime.now());
+        userReview.setUser(userEntityService.findByIdWithControl(request.user().getId()));
+        userReview.getUser().setReviewCount(userReview.getUser().getReviewCount() + 1);
 
         userReview = userReviewEntityService.save(userReview);
 
@@ -57,4 +67,27 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
 
         userReviewEntityService.delete(userReview);
     }
+
+    @Override
+    public List<UserReviewDTO> getReviewsByUserName(String name) {
+        List<UserReview> userReviews = userReviewEntityService.findReviewsByUserName(name);
+
+        if(userReviews.isEmpty()) {
+            throw new AppBusinessException(UserReviewErrorMessage.REVIEW_NOT_FOUND);
+        }
+
+        return UserReviewMapper.INSTANCE.convertToUserReviewDTOs(userReviews);
+    }
+
+    @Override
+    public List<UserReviewDTO> getReviewsByUserId(Long id) {
+        List<UserReview> userReviews = userReviewEntityService.findReviewsByUserId(id);
+
+        if(userReviews.isEmpty()) {
+            throw new AppBusinessException(UserReviewErrorMessage.REVIEW_NOT_FOUND);
+        }
+
+        return UserReviewMapper.INSTANCE.convertToUserReviewDTOs(userReviews);
+    }
+
 }
