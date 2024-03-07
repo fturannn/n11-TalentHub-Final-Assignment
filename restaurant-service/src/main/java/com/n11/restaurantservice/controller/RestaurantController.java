@@ -46,4 +46,9 @@ public class RestaurantController {
     public void deleteRestaurant(@PathVariable Long id) {
         restaurantControllerContract.delete(id);
     }
+
+    @PutMapping("/{id}/score")
+    public RestaurantDTO updateScore(@PathVariable Long id, @RequestBody int newScore) {
+        return restaurantControllerContract.updateScore(id, newScore);
+    }
 }

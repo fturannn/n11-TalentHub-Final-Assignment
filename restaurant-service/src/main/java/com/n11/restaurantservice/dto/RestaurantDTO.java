@@ -14,10 +14,13 @@ public record RestaurantDTO(Long id,
                             String country,
                             String city,
                             String district,
+                            double latitude,
+                            double longitude,
                             LocalTime openingHour,
                             LocalTime closingHour,
                             EnumCuisineType cuisineType,
                             List<EnumFeatureType> features,
+                            Long totalReviewNumber,
                             double averageRating,
                             String description) {
 }

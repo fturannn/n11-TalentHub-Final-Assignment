@@ -73,4 +73,19 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
 
         restaurantEntityService.delete(restaurant);
     }
+
+    @Override
+    public RestaurantDTO updateScore(Long id, int newScore) {
+        Restaurant restaurant = restaurantEntityService.findByIdWithControl(id);
+
+        double total = restaurant.getAverageRating() * restaurant.getTotalReviewNumber() + newScore;
+        long newTotalReviewNumber = restaurant.getTotalReviewNumber() + 1;
+
+        restaurant.setTotalReviewNumber(newTotalReviewNumber);
+        restaurant.setAverageRating(total / newTotalReviewNumber);
+
+        restaurant = restaurantEntityService.save(restaurant);
+
+        return RestaurantMapper.INSTANCE.convertToRestaurantDTO(restaurant);
+    }
 }

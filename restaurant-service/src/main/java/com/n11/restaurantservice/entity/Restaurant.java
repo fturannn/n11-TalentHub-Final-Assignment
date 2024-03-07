@@ -45,6 +45,12 @@ public class Restaurant extends BaseEntity {
     @Column(name = "DISTRICT", length = 100, nullable = false)
     private String district;
 
+    @Column(name = "LATITUDE", nullable = false)
+    private double latitude;
+
+    @Column(name = "LONGITUDE", nullable = false)
+    private double longitude;
+
     @Column(name = "OPENING_HOUR", nullable = false)
     private LocalTime openingHour;
 
@@ -57,6 +63,9 @@ public class Restaurant extends BaseEntity {
 
     @Column(name = "FEATURES")
     private List<EnumFeatureType> features;
+
+    @Column(name = "TOTAL_REVIEW_NUMBER")
+    private long totalReviewNumber;
 
     @Column(name = "AVERAGE_RATING")
     private double averageRating;
