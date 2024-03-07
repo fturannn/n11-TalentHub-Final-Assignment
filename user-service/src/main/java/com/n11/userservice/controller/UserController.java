@@ -1,6 +1,7 @@
 package com.n11.userservice.controller;
 
 import com.n11.userservice.controller.contract.UserControllerContract;
+import com.n11.userservice.dto.RestaurantDTO;
 import com.n11.userservice.dto.UserDTO;
 import com.n11.userservice.general.RestResponse;
 import com.n11.userservice.request.UserSaveRequest;
@@ -58,5 +59,11 @@ public class UserController {
     public ResponseEntity<RestResponse<UserDTO>> deactivateUser(@PathVariable Long id) {
         UserDTO userDTO = userControllerContract.deactivate(id);
         return ResponseEntity.ok(RestResponse.of(userDTO));
+    }
+
+    @GetMapping("/recommended/{id}")
+    public ResponseEntity<RestResponse<List<RestaurantDTO>>> getRecommendedRestaurants(@PathVariable Long id) {
+        List<RestaurantDTO> restaurantDTOS = userControllerContract.getRecommendedRestaurants(id);
+        return ResponseEntity.ok(RestResponse.of(restaurantDTOS));
     }
 }

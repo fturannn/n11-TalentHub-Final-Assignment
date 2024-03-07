@@ -2,10 +2,14 @@ package com.n11.userservice.dto;
 
 import com.n11.userservice.enums.EnumCuisineType;
 import com.n11.userservice.enums.EnumFeatureType;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalTime;
 import java.util.List;
 
+@Getter
+@Setter
 public class RestaurantDTO {
 
     private Long id;

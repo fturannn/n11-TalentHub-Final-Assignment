@@ -1,5 +1,6 @@
 package com.n11.userservice.controller.contract;
 
+import com.n11.userservice.dto.RestaurantDTO;
 import com.n11.userservice.dto.UserDTO;
 import com.n11.userservice.request.UserSaveRequest;
 import com.n11.userservice.request.UserUpdateRequest;
@@ -15,4 +16,5 @@ public interface UserControllerContract {
     void delete(Long id);
     UserDTO activate(Long id);
     UserDTO deactivate(Long id);
+    List<RestaurantDTO> getRecommendedRestaurants(Long id);
 }

@@ -6,11 +6,13 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @FeignClient(name = "restaurant", url = "http://localhost:8080/api/v1/restaurants")
 public interface RestaurantServiceClient {
 
     @GetMapping
-    public ResponseEntity<RestResponse<RestaurantDTO>> getAllRestaurants();
+    public ResponseEntity<RestResponse<List<RestaurantDTO>>> getAllRestaurants();
 
     @PutMapping("/{id}/score")
     public void updateRestaurantScore(@PathVariable Long id, @RequestBody int newScore);
