@@ -17,6 +17,5 @@ public record RestaurantUpdateRequest(Long id,
                                       LocalTime closingHour,
                                       EnumCuisineType cuisineType,
                                       List<EnumFeatureType> features,
-                                      double averageRating,
                                       String description) {
 }
