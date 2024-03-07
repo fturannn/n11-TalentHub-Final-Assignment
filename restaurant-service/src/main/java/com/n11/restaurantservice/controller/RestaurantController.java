@@ -48,7 +48,7 @@ public class RestaurantController {
     }
 
     @PutMapping("/{id}/score")
-    public RestaurantDTO updateScore(@PathVariable Long id, @RequestBody int newScore) {
-        return restaurantControllerContract.updateScore(id, newScore);
+    public RestaurantDTO updateRestaurantScore(@PathVariable Long id, @RequestBody int newScore) {
+        return restaurantControllerContract.updateRestaurantScore(id, newScore);
     }
 }

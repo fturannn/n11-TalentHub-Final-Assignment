@@ -75,7 +75,7 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
     }
 
     @Override
-    public RestaurantDTO updateScore(Long id, int newScore) {
+    public RestaurantDTO updateRestaurantScore(Long id, int newScore) {
         Restaurant restaurant = restaurantEntityService.findByIdWithControl(id);
 
         double total = restaurant.getAverageRating() * restaurant.getTotalReviewNumber() + newScore;
