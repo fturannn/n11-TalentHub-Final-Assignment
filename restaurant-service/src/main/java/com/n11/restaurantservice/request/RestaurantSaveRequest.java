@@ -2,11 +2,13 @@ package com.n11.restaurantservice.request;
 
 import com.n11.restaurantservice.enums.EnumCuisineType;
 import com.n11.restaurantservice.enums.EnumFeatureType;
+import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalTime;
 import java.util.List;
 
-public record RestaurantSaveRequest(String name,
+public record RestaurantSaveRequest(@NotBlank
+                                    String name,
                                     String phoneNumber,
                                     String email,
                                     String country,

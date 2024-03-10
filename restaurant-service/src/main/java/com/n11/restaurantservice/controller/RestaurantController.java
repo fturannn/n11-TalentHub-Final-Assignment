@@ -5,6 +5,7 @@ import com.n11.restaurantservice.dto.RestaurantDTO;
 import com.n11.restaurantservice.general.RestResponse;
 import com.n11.restaurantservice.request.RestaurantSaveRequest;
 import com.n11.restaurantservice.request.RestaurantUpdateRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class RestaurantController {
     }
 
     @PostMapping
-    public ResponseEntity<RestResponse<RestaurantDTO>> saveRestaurant(@RequestBody RestaurantSaveRequest request) {
+    public ResponseEntity<RestResponse<RestaurantDTO>> saveRestaurant(@RequestBody @Valid RestaurantSaveRequest request) {
         RestaurantDTO restaurantDTO = restaurantControllerContract.save(request);
         return ResponseEntity.ok(RestResponse.of(restaurantDTO));
     }
