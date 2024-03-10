@@ -139,7 +139,11 @@ public class UserControllerContractImpl implements UserControllerContract {
 
         List<RestaurantDTO> restaurantsByRecommendationPoint = new ArrayList<>(nearbyRestaurantsList.keySet());
 
-        return restaurantsByRecommendationPoint.subList(0,3);
+        if(restaurantsByRecommendationPoint.size() < 3) {
+            return restaurantsByRecommendationPoint;
+        } else {
+            return restaurantsByRecommendationPoint.subList(0,3);
+        }
     }
 
 }

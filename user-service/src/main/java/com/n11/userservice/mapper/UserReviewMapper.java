@@ -15,6 +15,8 @@ import java.util.List;
 public interface UserReviewMapper {
 
     UserReviewMapper INSTANCE = Mappers.getMapper(UserReviewMapper.class);
+
+    @Mapping(source = "userId", target = "user.id")
     UserReview convertToUserReview(UserReviewSaveRequest request);
 
     @Mappings({

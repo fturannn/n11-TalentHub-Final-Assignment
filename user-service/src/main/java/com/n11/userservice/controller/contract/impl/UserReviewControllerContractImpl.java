@@ -23,6 +23,7 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
 
     private final UserReviewEntityService userReviewEntityService;
     private final UserEntityService userEntityService;
+    private final RestaurantServiceClient restaurantServiceClient;
 
     @Override
     public UserReviewDTO getById(Long id) {
@@ -43,10 +44,10 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
         UserReview userReview = UserReviewMapper.INSTANCE.convertToUserReview(request);
 
         userReview.setReviewDate(LocalDateTime.now());
-        userReview.setUser(userEntityService.findByIdWithControl(request.user().getId()));
+        userReview.setUser(userEntityService.findByIdWithControl(request.userId()));
         userReview.getUser().setReviewCount(userReview.getUser().getReviewCount() + 1);
 
-        userReviewEntityService.updateRestaurantScore(userReview.getRestaurantId(), request.score().getValue());
+        restaurantServiceClient.updateRestaurantScore(userReview.getRestaurantId(), request.score().getValue());
 
         userReview = userReviewEntityService.save(userReview);
 
