@@ -118,7 +118,7 @@ class UserReviewControllerContractImplUnitTest {
 
         //when
         Mockito.when(userEntityService.findByIdWithControl(Mockito.anyLong())).thenReturn(user);
-        Mockito.doNothing().when(restaurantServiceClient).updateRestaurantScore(Mockito.anyLong(), Mockito.anyInt());
+        Mockito.doNothing().when(restaurantServiceClient).updateRestaurantScoreAccordingToUserReview(Mockito.anyString(), Mockito.anyInt());
         Mockito.when(userReviewEntityService.save(Mockito.any(UserReview.class))).thenReturn(userReview);
 
         UserReviewDTO result = userReviewControllerContractImpl.save(userReviewSaveRequest);
@@ -143,7 +143,7 @@ class UserReviewControllerContractImplUnitTest {
         inOrder.verifyNoMoreInteractions();
 
         inOrder = Mockito.inOrder(restaurantServiceClient);
-        inOrder.verify(restaurantServiceClient).updateRestaurantScore(Mockito.eq(userReview.getRestaurantId()), Mockito.eq(userReviewSaveRequest.score().getValue()));
+        inOrder.verify(restaurantServiceClient).updateRestaurantScoreAccordingToUserReview(Mockito.eq(userReview.getRestaurantId()), Mockito.eq(userReviewSaveRequest.score().getValue()));
         inOrder.verifyNoMoreInteractions();
     }
 

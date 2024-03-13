@@ -6,13 +6,17 @@ import com.n11.userservice.dto.UserDTO;
 import com.n11.userservice.general.RestResponse;
 import com.n11.userservice.request.UserSaveRequest;
 import com.n11.userservice.request.UserUpdateRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Validated
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/users")
 public class UserController {
@@ -26,43 +30,43 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RestResponse<UserDTO>> getUserById(@PathVariable Long id) {
+    public ResponseEntity<RestResponse<UserDTO>> getUserById(@PathVariable @NotNull Long id) {
         UserDTO userDTO = userControllerContract.getById(id);
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 
     @PostMapping
-    public ResponseEntity<RestResponse<UserDTO>> saveUser(@RequestBody UserSaveRequest request) {
+    public ResponseEntity<RestResponse<UserDTO>> saveUser(@RequestBody @Valid UserSaveRequest request) {
         UserDTO userDTO = userControllerContract.save(request);
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 
     @PutMapping("/{debugUserId}")
-    public ResponseEntity<RestResponse<UserDTO>> updateUser(@PathVariable Long debugUserId,
-                                                        @RequestBody UserUpdateRequest request) {
+    public ResponseEntity<RestResponse<UserDTO>> updateUser(@PathVariable @NotNull Long debugUserId,
+                                                        @RequestBody @Valid UserUpdateRequest request) {
         UserDTO userDTO = userControllerContract.update(debugUserId, request);
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable @NotNull Long id) {
         userControllerContract.delete(id);
     }
 
     @PatchMapping("/{id}/activate")
-    public ResponseEntity<RestResponse<UserDTO>> activateUser(@PathVariable Long id) {
+    public ResponseEntity<RestResponse<UserDTO>> activateUser(@PathVariable @NotNull Long id) {
         UserDTO userDTO = userControllerContract.activate(id);
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 
     @PatchMapping("/{id}/deactivate")
-    public ResponseEntity<RestResponse<UserDTO>> deactivateUser(@PathVariable Long id) {
+    public ResponseEntity<RestResponse<UserDTO>> deactivateUser(@PathVariable @NotNull Long id) {
         UserDTO userDTO = userControllerContract.deactivate(id);
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 
     @GetMapping("/recommended/{id}")
-    public ResponseEntity<RestResponse<List<RestaurantDTO>>> getRecommendedRestaurants(@PathVariable Long id) {
+    public ResponseEntity<RestResponse<List<RestaurantDTO>>> getRecommendedRestaurants(@PathVariable @NotNull Long id) {
         List<RestaurantDTO> restaurantDTOS = userControllerContract.getRecommendedRestaurants(id);
         return ResponseEntity.ok(RestResponse.of(restaurantDTOS));
     }

@@ -47,7 +47,7 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
         userReview.setUser(userEntityService.findByIdWithControl(request.userId()));
         userReview.getUser().setReviewCount(userReview.getUser().getReviewCount() + 1);
 
-        restaurantServiceClient.updateRestaurantScore(userReview.getRestaurantId(), request.score().getValue());
+        restaurantServiceClient.updateRestaurantScoreAccordingToUserReview(userReview.getRestaurantId(), request.score().getValue());
 
         userReview = userReviewEntityService.save(userReview);
 

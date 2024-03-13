@@ -8,7 +8,7 @@ public record UserReviewDTO(Long id,
                             String userName,
                             String userSurname,
                             String userFullName,
-                            Long restaurantId,
+                            String restaurantId,
                             String text,
                             LocalDateTime reviewDate,
                             EnumScore score) {

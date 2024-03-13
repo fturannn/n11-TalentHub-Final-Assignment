@@ -15,7 +15,7 @@ public class RestaurantDTOFaker {
 
         for(int i = 0; i < 5; i++) {
             RestaurantDTO restaurantDTO = new RestaurantDTO();
-            restaurantDTO.setId((long) i);
+            restaurantDTO.setId(String.valueOf(i));
             restaurantDTO.setName("Test Restaurant Name " + i);
             restaurantDTO.setPhoneNumber("0540404404" + i);
             restaurantDTO.setEmail("testrestaurant" + i + "@email.com");

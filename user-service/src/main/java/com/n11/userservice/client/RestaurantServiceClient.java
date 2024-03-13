@@ -15,5 +15,5 @@ public interface RestaurantServiceClient {
     public ResponseEntity<RestResponse<List<RestaurantDTO>>> getAllRestaurants();
 
     @PutMapping("/{id}/score")
-    public void updateRestaurantScore(@PathVariable Long id, @RequestBody int newScore);
+    public void updateRestaurantScoreAccordingToUserReview(@PathVariable String id, @RequestBody Integer newScore);
 }

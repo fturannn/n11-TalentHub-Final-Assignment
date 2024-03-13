@@ -27,7 +27,7 @@ public class UserReview extends BaseEntity {
     private User user;
 
     @Column(name = "RESTAURANT_ID", nullable = false)
-    private Long restaurantId;
+    private String restaurantId;
 
     @Column(name = "TEXT", length = 500)
     private String text;

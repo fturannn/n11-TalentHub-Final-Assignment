@@ -57,7 +57,7 @@ public class User extends BaseEntity {
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "GENDER", length = 30)
+    @Column(name = "GENDER", length = 30, nullable = false)
     private EnumGender gender;
 
     @Column(name = "PHOTO_URL", length = 200)
