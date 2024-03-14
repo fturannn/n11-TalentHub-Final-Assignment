@@ -1,14 +1,15 @@
 package com.n11.restaurantservice.dao;
 
 import com.n11.restaurantservice.entity.Restaurant;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.solr.repository.Query;
+import org.springframework.data.solr.repository.SolrCrudRepository;
 
 import java.util.Optional;
 
-@Repository
-public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
+public interface RestaurantRepository extends SolrCrudRepository<Restaurant, String> {
 
-    Optional<Restaurant> findRestaurantByName(String name);
-    Optional<Restaurant> findRestaurantByEmail(String email);
+    Optional<Restaurant> findByName(String name);
+
+    Optional<Restaurant> findByEmail(String email);
 }

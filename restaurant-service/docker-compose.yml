@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  solr:
+    image: solr:latest
+    container_name: restaurant-service-solr
+    ports:
+      - "8983:8983"
+    volumes:
+      - ./data:/var/solr
+    command:
+      - solr-precreate
+      - restaurants
+
+  restaurant-service:
+    container_name: restaurant-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - solr

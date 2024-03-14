@@ -1,23 +1,22 @@
 package com.n11.restaurantservice.request;
 
-import com.n11.restaurantservice.enums.EnumCuisineType;
-import com.n11.restaurantservice.enums.EnumFeatureType;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalTime;
 import java.util.List;
 
-public record RestaurantUpdateRequest(Long id,
-                                      String name,
-                                      String phoneNumber,
-                                      String email,
-                                      String country,
-                                      String city,
-                                      String district,
-                                      double latitude,
-                                      double longitude,
-                                      LocalTime openingHour,
-                                      LocalTime closingHour,
-                                      EnumCuisineType cuisineType,
-                                      List<EnumFeatureType> features,
-                                      String description) {
+public record RestaurantUpdateRequest(@NotBlank String id,
+                                      @NotBlank String name,
+                                      @Size(max = 11, min = 11) String phoneNumber,
+                                      @Email @NotBlank String email,
+                                      @NotBlank String country,
+                                      @NotBlank String city,
+                                      @NotBlank String district,
+                                      @NotNull Double latitude,
+                                      @NotNull Double longitude,
+                                      @NotNull LocalTime openingHour,
+                                      @NotNull LocalTime closingHour,
+                                      @Size(max = 500) String description) {
 }

@@ -3,10 +3,7 @@ package com.n11.restaurantservice.general;
 import com.n11.restaurantservice.exception.ItemNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.TransactionSystemException;
-import org.springframework.validation.method.MethodValidationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -59,9 +56,8 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
     }
 
-    @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers,
-                                                                  HttpStatusCode status, WebRequest request) {
+                                                                  WebRequest request) {
         List<Map<String, String>> errorList = ex.getBindingResult().getFieldErrors().stream()
                 .map(fieldError ->
                 {

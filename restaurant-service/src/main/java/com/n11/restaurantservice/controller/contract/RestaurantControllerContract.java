@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface RestaurantControllerContract {
 
-    RestaurantDTO getById(Long id);
+    RestaurantDTO getById(String id);
     List<RestaurantDTO> getAll();
     RestaurantDTO save(RestaurantSaveRequest request);
-    RestaurantDTO update(Long id, RestaurantUpdateRequest request);
-    void delete(Long id);
-    RestaurantDTO updateRestaurantScore(Long id, int newScore);
+    RestaurantDTO update(String id, RestaurantUpdateRequest request);
+    void delete(String id);
+    RestaurantDTO updateRestaurantScore(String id, Integer newScore);
 }

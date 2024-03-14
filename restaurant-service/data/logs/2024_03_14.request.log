@@ -1,0 +1,11 @@
+172.25.0.3 - - [14/Mar/2024:09:17:38 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 114
+172.25.0.3 - - [14/Mar/2024:09:17:38 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=1&wt=javabin&version=2 HTTP/1.1" 200 492
+172.25.0.3 - - [14/Mar/2024:09:17:47 +0000] "GET /solr/restaurants/select?q=id%3A66a9cfde%5C-c1b0%5C-47fa%5C-87ee%5C-882e882a6bb5&start=0&rows=1&wt=javabin&version=2 HTTP/1.1" 200 534
+172.25.0.3 - - [14/Mar/2024:09:17:47 +0000] "POST /solr/restaurants/update?wt=javabin&version=2 HTTP/1.1" 200 41
+172.25.0.3 - - [14/Mar/2024:09:17:47 +0000] "POST /solr/restaurants/update HTTP/1.1" 200 41
+172.25.0.3 - - [14/Mar/2024:09:17:52 +0000] "GET /solr/restaurants/select?q=name%3A%22Lokanta+Restaurant%22&start=0&rows=1&wt=javabin&version=2 HTTP/1.1" 200 136
+172.25.0.3 - - [14/Mar/2024:09:17:52 +0000] "GET /solr/restaurants/select?q=email%3Alokantarestaurant%40gmail.com&start=0&rows=1&wt=javabin&version=2 HTTP/1.1" 200 144
+172.25.0.3 - - [14/Mar/2024:09:17:52 +0000] "POST /solr/restaurants/update?wt=javabin&version=2 HTTP/1.1" 200 41
+172.25.0.3 - - [14/Mar/2024:09:17:52 +0000] "POST /solr/restaurants/update HTTP/1.1" 200 41
+172.25.0.3 - - [14/Mar/2024:09:18:13 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 113
+172.25.0.3 - - [14/Mar/2024:09:18:13 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=1&wt=javabin&version=2 HTTP/1.1" 200 500

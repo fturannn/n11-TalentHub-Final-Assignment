@@ -2,14 +2,13 @@ package com.n11.restaurantservice.general;
 
 import com.n11.restaurantservice.exception.ItemNotFoundException;
 import lombok.Getter;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.solr.repository.SolrCrudRepository;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Getter
-public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepository<E, Long>> {
+public abstract class BaseEntityService<E extends BaseEntity, R extends SolrCrudRepository<E, String>> {
 
     private final R repository;
 
@@ -36,11 +35,11 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepos
         return repository.save(entity);
     }
 
-    public List<E> findAll() {
+    public Iterable<E> findAll() {
         return repository.findAll();
     }
 
-    public E findByIdWithControl(Long id) {
+    public E findByIdWithControl(String id) {
         Optional<E> isEExist = repository.findById(id);
         E entity;
 
@@ -53,11 +52,11 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepos
         return entity;
     }
 
-    public Optional<E> findById(Long id){
+    public Optional<E> findById(String id){
         return repository.findById(id);
     }
 
-    public void delete(Long id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 

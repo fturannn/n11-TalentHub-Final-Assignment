@@ -12,6 +12,7 @@ import com.n11.restaurantservice.service.RestaurantEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
 
     private final RestaurantEntityService restaurantEntityService;
     @Override
-    public RestaurantDTO getById(Long id) {
+    public RestaurantDTO getById(String id) {
         Restaurant restaurant = restaurantEntityService.findByIdWithControl(id);
 
         return RestaurantMapper.INSTANCE.convertToRestaurantDTO(restaurant);
@@ -29,13 +30,16 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
 
     @Override
     public List<RestaurantDTO> getAll() {
-        List<Restaurant> restaurants = restaurantEntityService.findAll();
+        Iterable<Restaurant> restaurants = restaurantEntityService.findAll();
+        List<Restaurant> restaurantList = new ArrayList<>();
 
-        if(restaurants.isEmpty()) {
+        if(!restaurants.iterator().hasNext()) {
             throw new AppBusinessException(RestaurantErrorMessage.NO_RESTAURANTS_FOUND);
+        } else {
+            restaurants.forEach(restaurantList::add);
         }
 
-        return RestaurantMapper.INSTANCE.convertToRestaurantDTOs(restaurants);
+        return RestaurantMapper.INSTANCE.convertToRestaurantDTOs(restaurantList);
     }
 
     @Override
@@ -51,13 +55,16 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
             throw new AppBusinessException(RestaurantErrorMessage.RESTAURANT_ALREADY_EXISTS);
         }
 
+        restaurant.setTotalReviewNumber(0L);
+        restaurant.setAverageRating(0.0);
+
         restaurant = restaurantEntityService.save(restaurant);
 
         return RestaurantMapper.INSTANCE.convertToRestaurantDTO(restaurant);
     }
 
     @Override
-    public RestaurantDTO update(Long id, RestaurantUpdateRequest request) {
+    public RestaurantDTO update(String id, RestaurantUpdateRequest request) {
         Restaurant restaurant = restaurantEntityService.findByIdWithControl(id);
 
         RestaurantMapper.INSTANCE.updateRestaurantFields(restaurant, request);
@@ -68,18 +75,18 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Restaurant restaurant = restaurantEntityService.findByIdWithControl(id);
 
         restaurantEntityService.delete(restaurant);
     }
 
     @Override
-    public RestaurantDTO updateRestaurantScore(Long id, int newScore) {
+    public RestaurantDTO updateRestaurantScore(String id, Integer newScore) {
         Restaurant restaurant = restaurantEntityService.findByIdWithControl(id);
 
-        double total = restaurant.getAverageRating() * restaurant.getTotalReviewNumber() + newScore;
-        long newTotalReviewNumber = restaurant.getTotalReviewNumber() + 1;
+        Double total = restaurant.getAverageRating() * restaurant.getTotalReviewNumber() + newScore;
+        Long newTotalReviewNumber = restaurant.getTotalReviewNumber() + 1;
 
         restaurant.setTotalReviewNumber(newTotalReviewNumber);
         restaurant.setAverageRating(total / newTotalReviewNumber);
