@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @Validated
 @RequiredArgsConstructor
-@Tag(name = "User Controller", description = "Users and User Reviews Management")
+@Tag(name = "User Controller", description = "User Management")
 @RequestMapping("/api/v1/users")
 public class UserController {
 

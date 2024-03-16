@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "restaurant", url = "http://localhost:8080/api/v1/restaurants")
+@FeignClient(name = "restaurant", url = "http://restaurant-service:8080/api/v1/restaurants")
 public interface RestaurantServiceClient {
 
     @GetMapping
     public ResponseEntity<RestResponse<List<RestaurantDTO>>> getAllRestaurants();
 
     @PutMapping("/{id}/score")
-    public void updateRestaurantScoreAccordingToUserReview(@PathVariable String id, @RequestBody Integer newScore);
+    public void updateRestaurantScoreAccordingToUserReview(@PathVariable String id, @RequestBody int newScore);
 }
