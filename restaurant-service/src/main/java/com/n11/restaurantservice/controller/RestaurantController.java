@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -61,7 +62,7 @@ public class RestaurantController {
 
     @PutMapping("/{id}/score")
     @Operation(summary = "Update restaurant score", description = "Updates the score of the restaurant based on the provided ID and new score.")
-    public RestaurantDTO updateRestaurantScoreAccordingToUserReview(@PathVariable @NotBlank String id, @RequestBody @NotBlank Integer newScore) {
+    public RestaurantDTO updateRestaurantScoreAccordingToUserReview(@PathVariable @NotBlank String id, @RequestBody @NotNull int newScore) {
         return restaurantControllerContract.updateRestaurantScore(id, newScore);
     }
 }

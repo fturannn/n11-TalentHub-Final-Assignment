@@ -9,3 +9,4 @@
 172.25.0.3 - - [14/Mar/2024:09:17:52 +0000] "POST /solr/restaurants/update HTTP/1.1" 200 41
 172.25.0.3 - - [14/Mar/2024:09:18:13 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 113
 172.25.0.3 - - [14/Mar/2024:09:18:13 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=1&wt=javabin&version=2 HTTP/1.1" 200 500
+192.168.65.1 - - [14/Mar/2024:11:07:32 +0000] "GET /solr/img/chosen-sprite.png HTTP/1.1" 200 538

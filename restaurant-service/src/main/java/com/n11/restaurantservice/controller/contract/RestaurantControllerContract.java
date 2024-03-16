@@ -13,5 +13,5 @@ public interface RestaurantControllerContract {
     RestaurantDTO save(RestaurantSaveRequest request);
     RestaurantDTO update(String id, RestaurantUpdateRequest request);
     void delete(String id);
-    RestaurantDTO updateRestaurantScore(String id, Integer newScore);
+    RestaurantDTO updateRestaurantScore(String id, int newScore);
 }

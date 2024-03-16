@@ -1,8 +1,6 @@
 package com.n11.restaurantservice.dao;
 
 import com.n11.restaurantservice.entity.Restaurant;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.solr.repository.Query;
 import org.springframework.data.solr.repository.SolrCrudRepository;
 
 import java.util.Optional;

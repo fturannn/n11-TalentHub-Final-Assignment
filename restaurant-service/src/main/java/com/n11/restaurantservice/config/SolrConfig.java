@@ -11,7 +11,6 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 @Configuration
 @EnableSolrRepositories(
         basePackages = "com.n11.restaurantservice"
-        , namedQueriesLocation = ""
 )
 @ComponentScan
 public class SolrConfig {

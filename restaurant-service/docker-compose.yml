@@ -11,6 +11,8 @@ services:
     command:
       - solr-precreate
       - restaurants
+    networks:
+      - spring-cloud-network
 
   restaurant-service:
     container_name: restaurant-service
@@ -21,3 +23,14 @@ services:
       - '8080:8080'
     depends_on:
       - solr
+    environment:
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=guest
+      - spring.rabbitmq.password=guest
+    networks:
+      - spring-cloud-network
+
+networks:
+  spring-cloud-network:
+    external: true
