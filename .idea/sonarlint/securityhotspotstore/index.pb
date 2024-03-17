@@ -65,3 +65,9 @@ buser-service/src/test/java/com/n11/userservice/controller/UserReviewControllerI
 [user-service/src/test/java/com/n11/userservice/service/UserReviewEntityServiceUnitTest.java,9/9/99219ba0023c2a72b691ac0363c75d8347734134
  
 prestaurant-service/src/main/java/com/n11/restaurantservice/controller/contract/RestaurantControllerContract.java,8/c/8c95a0a8c6350a16244c37b0eeded9619a79a02e
+o
+?user-service/src/main/java/com/n11/userservice/dto/UserDTO.java,c/2/c2dfcbc961666b8af9ad3fb9a95d2478694116d4
+o
+?user-service/src/main/java/com/n11/userservice/entity/User.java,0/5/05e5aefb328ce3922caed59be0ad037fa853a4f7
+v
+Fuser-service/src/test/java/com/n11/userservice/faker/UserDTOFaker.java,c/3/c3f15e19ceb748c1bc8d27bf9c1c658beffa4eac
