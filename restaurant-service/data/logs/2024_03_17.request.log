@@ -131,3 +131,5 @@
 172.29.0.8 - - [17/Mar/2024:11:34:52 +0000] "POST /solr/restaurants/update?wt=javabin&version=2 HTTP/1.1" 200 40
 172.29.0.8 - - [17/Mar/2024:11:34:52 +0000] "POST /solr/restaurants/update HTTP/1.1" 200 41
 172.29.0.8 - - [17/Mar/2024:11:34:54 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 113
+192.168.0.8 - - [17/Mar/2024:13:11:15 +0000] "GET /solr/restaurants/select?q=*%3A*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 114
+192.168.0.8 - - [17/Mar/2024:13:11:18 +0000] "GET /solr/restaurants/select?q=id%3A66ebcfa4%5C-4e21%5C-498a%5C-ae1e%5C-65bcbaac1888&start=0&rows=1&wt=javabin&version=2 HTTP/1.1" 200 154

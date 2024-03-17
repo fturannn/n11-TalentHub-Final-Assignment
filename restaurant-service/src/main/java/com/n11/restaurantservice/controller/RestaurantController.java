@@ -67,6 +67,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/restaurant-name-like/{name}")
+    @Operation(summary = "Get Restaurants by Name (Like)", description = "Retrieve restaurants whose names contain the provided substring.")
     public ResponseEntity<RestResponse<List<RestaurantDTO>>> getRestaurantsByNameContaining(@PathVariable @NotBlank String name) {
         List<RestaurantDTO> restaurantDTOS = restaurantControllerContract.getRestaurantsByNameContaining(name);
         return ResponseEntity.ok(RestResponse.of(restaurantDTOS));
