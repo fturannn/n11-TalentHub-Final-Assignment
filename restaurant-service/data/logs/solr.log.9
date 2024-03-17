@@ -1,65 +1,49 @@
-2024-03-17 11:40:10.500 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 17.0.10+7
-2024-03-17 11:40:11.248 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
-2024-03-17 11:40:11.415 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2024-03-17 11:40:11.470 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
-2024-03-17 11:40:11.470 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
-2024-03-17 11:40:11.474 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /opt/solr-9.5.0
-2024-03-17 11:40:11.474 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2024-03-17T11:40:11.474332885Z
-2024-03-17 11:40:11.476 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: /var/solr/logs/jvm_crash_11.log
-2024-03-17 11:40:11.592 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: /var/solr/data (source: system property: solr.solr.home)
-2024-03-17 11:40:11.643 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig solr.xml not found in SOLR_HOME, using built-in default
-2024-03-17 11:40:11.644 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from /opt/solr-9.5.0/server/solr/solr.xml
-2024-03-17 11:40:11.778 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/opt/solr-9.5.0/lib]
-2024-03-17 11:40:13.757 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
-2024-03-17 11:40:14.776 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
-2024-03-17 11:40:14.783 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
-2024-03-17 11:40:15.110 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /var/solr/data
-2024-03-17 11:40:15.110 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [restaurants]
-2024-03-17 11:40:15.145 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
-2024-03-17 11:40:15.436 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.s.IndexSchema Schema name=default-config
-2024-03-17 11:40:15.734 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
-2024-03-17 11:40:16.336 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2024-03-17 11:40:16.336 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.CoreContainer Creating SolrCore 'restaurants' using configuration from instancedir /var/solr/data/restaurants, trusted=true
-2024-03-17 11:40:16.467 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.SolrCore Opening new SolrCore at [/var/solr/data/restaurants], dataDir=[/var/solr/data/restaurants/data/]
-2024-03-17 11:40:16.862 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2024-03-17 11:40:17.302 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@21362712{solr-jetty-context.xml,/solr,file:///opt/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{/opt/solr-9.5.0/server/solr-webapp/webapp}
-2024-03-17 11:40:17.327 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened /var/solr/logs/2024_03_17.request.log
-2024-03-17 11:40:17.346 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@666b83a4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
-2024-03-17 11:40:17.348 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@3e8f7922{STARTING}[10.0.19,sto=0] @9567ms
-2024-03-17 11:40:17.467 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.e.j.s.Server Stopped Server@3e8f7922{STOPPING}[10.0.19,sto=0]
-2024-03-17 11:40:17.473 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.e.j.s.AbstractConnector Stopped ServerConnector@666b83a4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
-2024-03-17 11:40:17.526 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.c.CoreContainer Shutting down CoreContainer instance=1555965524
-2024-03-17 11:40:17.812 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2024-03-17 11:40:17.847 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
-2024-03-17 11:40:17.847 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
-2024-03-17 11:40:17.881 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
-2024-03-17 11:40:17.881 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
-2024-03-17 11:40:18.162 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /var/solr/data/restaurants/conf
-2024-03-17 11:40:18.170 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.s.DirectSolrSpellChecker init: {maxEdits=2, minPrefix=1, maxInspections=5, minQueryLength=4, name=default, field=_text_, classname=solr.DirectSolrSpellChecker, distanceMeasure=internal, accuracy=0.5, maxQueryFrequency=0.01}
-2024-03-17 11:40:18.175 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
-2024-03-17 11:40:18.176 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.SolrCore CLOSING SolrCore org.apache.solr.core.SolrCore@7f75be29 restaurants
-2024-03-17 11:40:18.176 INFO  (searcherExecutor-13-thread-1-processing-restaurants) [c: s: r: x:restaurants t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-03-17 11:40:18.176 INFO  (searcherExecutor-13-thread-1-processing-restaurants) [c: s: r: x:restaurants t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
-2024-03-17 11:40:18.182 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.restaurants tag=SolrCore@7f75be29
-2024-03-17 11:40:18.188 INFO  (searcherExecutor-13-thread-1-processing-restaurants) [c: s: r: x:restaurants t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2024-03-17 11:40:18.212 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.DirectUpdateHandler2 Committing on IndexWriter.close()  ... SKIPPED (unnecessary).
-2024-03-17 11:40:18.253 ERROR (coreLoadExecutor-11-thread-1) [c: s: r: x: t:] o.a.s.c.CoreContainer SolrCore failed to load on startup => org.apache.solr.common.SolrException: Unable to create core [restaurants]
-	at org.apache.solr.core.CoreContainer.createFromDescriptor(CoreContainer.java:1750)
-org.apache.solr.common.SolrException: Unable to create core [restaurants]
-	at org.apache.solr.core.CoreContainer.createFromDescriptor(CoreContainer.java:1750) ~[?:?]
-	at org.apache.solr.core.CoreContainer.lambda$loadInternal$12(CoreContainer.java:1057) ~[?:?]
-	at com.codahale.metrics.InstrumentedExecutorService$InstrumentedRunnable.run(InstrumentedExecutorService.java:212) ~[metrics-core-4.2.21.jar:4.2.21]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) ~[?:?]
-	at java.base/java.util.concurrent.FutureTask.run(Unknown Source) ~[?:?]
-	at org.apache.solr.common.util.ExecutorUtil$MDCAwareThreadPoolExecutor.lambda$execute$0(ExecutorUtil.java:299) ~[?:?]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
-	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
-Caused by: java.lang.IllegalStateException: This CoreContainer has been closed
-	at org.apache.solr.core.CoreContainer.registerCore(CoreContainer.java:1488) ~[?:?]
-	at org.apache.solr.core.CoreContainer.createFromDescriptor(CoreContainer.java:1727) ~[?:?]
-	... 8 more
-2024-03-17 11:40:18.266 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node tag=null
-2024-03-17 11:40:18.283 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm tag=null
-2024-03-17 11:40:18.299 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty tag=null
-2024-03-17 11:40:18.323 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Stopped o.e.j.w.WebAppContext@21362712{solr-jetty-context.xml,/solr,null,STOPPED}{/opt/solr-9.5.0/server/solr-webapp/webapp}
+2024-03-17 15:33:28.536 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 17.0.10+7
+2024-03-17 15:33:29.086 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
+2024-03-17 15:33:29.131 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2024-03-17 15:33:29.142 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
+2024-03-17 15:33:29.142 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
+2024-03-17 15:33:29.142 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /opt/solr-9.5.0
+2024-03-17 15:33:29.142 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2024-03-17T15:33:29.142430344Z
+2024-03-17 15:33:29.157 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: /var/solr/logs/jvm_crash_12.log
+2024-03-17 15:33:29.196 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: /var/solr/data (source: system property: solr.solr.home)
+2024-03-17 15:33:29.245 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig solr.xml not found in SOLR_HOME, using built-in default
+2024-03-17 15:33:29.245 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from /opt/solr-9.5.0/server/solr/solr.xml
+2024-03-17 15:33:29.313 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/opt/solr-9.5.0/lib]
+2024-03-17 15:33:30.773 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
+2024-03-17 15:33:31.211 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
+2024-03-17 15:33:31.221 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
+2024-03-17 15:33:31.569 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /var/solr/data
+2024-03-17 15:33:31.570 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [restaurants]
+2024-03-17 15:33:31.702 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
+2024-03-17 15:33:31.987 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.s.IndexSchema Schema name=default-config
+2024-03-17 15:33:32.178 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
+2024-03-17 15:33:32.882 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2024-03-17 15:33:32.989 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2024-03-17 15:33:32.990 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.CoreContainer Creating SolrCore 'restaurants' using configuration from instancedir /var/solr/data/restaurants, trusted=true
+2024-03-17 15:33:33.044 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.SolrCore Opening new SolrCore at [/var/solr/data/restaurants], dataDir=[/var/solr/data/restaurants/data/]
+2024-03-17 15:33:33.207 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@21362712{solr-jetty-context.xml,/solr,file:///opt/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{/opt/solr-9.5.0/server/solr-webapp/webapp}
+2024-03-17 15:33:33.238 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened /var/solr/logs/2024_03_17.request.log
+2024-03-17 15:33:33.242 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@666b83a4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
+2024-03-17 15:33:33.243 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@3e8f7922{STARTING}[10.0.19,sto=0] @6710ms
+2024-03-17 15:33:33.643 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2024-03-17 15:33:33.699 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-03-17 15:33:33.700 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-03-17 15:33:33.769 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
+2024-03-17 15:33:33.769 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
+2024-03-17 15:33:34.031 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /var/solr/data/restaurants/conf
+2024-03-17 15:33:34.051 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.s.DirectSolrSpellChecker init: {accuracy=0.5, maxQueryFrequency=0.01, maxEdits=2, minPrefix=1, maxInspections=5, minQueryLength=4, name=default, field=_text_, classname=solr.DirectSolrSpellChecker, distanceMeasure=internal}
+2024-03-17 15:33:34.063 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:restaurants t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
+2024-03-17 15:33:34.066 INFO  (searcherExecutor-13-thread-1-processing-restaurants) [c: s: r: x:restaurants t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2024-03-17 15:33:34.066 INFO  (searcherExecutor-13-thread-1-processing-restaurants) [c: s: r: x:restaurants t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-03-17 15:33:34.070 INFO  (searcherExecutor-13-thread-1-processing-restaurants) [c: s: r: x:restaurants t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
+2024-03-17 15:44:26.401 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.e.j.s.Server Stopped Server@3e8f7922{STOPPING}[10.0.19,sto=0]
+2024-03-17 15:44:26.411 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.e.j.s.AbstractConnector Stopped ServerConnector@666b83a4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
+2024-03-17 15:44:26.481 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.c.CoreContainer Shutting down CoreContainer instance=1555965524
+2024-03-17 15:44:26.484 INFO  (coreCloseExecutor-19-thread-1) [c: s: r: x:restaurants t:] o.a.s.c.SolrCore CLOSING SolrCore org.apache.solr.core.SolrCore@5e543b5e restaurants
+2024-03-17 15:44:26.492 INFO  (coreCloseExecutor-19-thread-1) [c: s: r: x:restaurants t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.restaurants tag=SolrCore@5e543b5e
+2024-03-17 15:44:26.556 INFO  (coreCloseExecutor-19-thread-1) [c: s: r: x:restaurants t:] o.a.s.u.DirectUpdateHandler2 Committing on IndexWriter.close()  ... SKIPPED (unnecessary).
+2024-03-17 15:44:26.616 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node tag=null
+2024-03-17 15:44:26.627 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm tag=null
+2024-03-17 15:44:26.631 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty tag=null
+2024-03-17 15:44:26.643 INFO  (JettyShutdownThread) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Stopped o.e.j.w.WebAppContext@21362712{solr-jetty-context.xml,/solr,null,STOPPED}{/opt/solr-9.5.0/server/solr-webapp/webapp}

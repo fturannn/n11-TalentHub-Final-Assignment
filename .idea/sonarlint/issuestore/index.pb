@@ -79,3 +79,5 @@ Kuser-service/src/main/java/com/n11/userservice/request/UserSaveRequest.java,9/
 Muser-service/src/main/java/com/n11/userservice/request/UserUpdateRequest.java,7/6/764944a59aba5335a1223966bc168562a3a7563a
 J
 restaurant-service/pom.xml,f/1/f1a73488b9e5d5fe78f637b81387a1a03077be0d
+M
+restaurant-service/Dockerfile,8/6/86381f2e345e9b901a5c560a6be6302fd1c1ae49
