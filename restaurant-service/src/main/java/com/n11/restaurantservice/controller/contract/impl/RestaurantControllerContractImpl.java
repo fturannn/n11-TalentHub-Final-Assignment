@@ -118,4 +118,19 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
 
         return RestaurantMapper.INSTANCE.convertToRestaurantDTO(restaurant);
     }
+
+    @Override
+    public List<RestaurantDTO> getRestaurantsByNameContaining(String name) {
+        rabbitProducerService.sendInfoMessage("Getting restaurants with name like: " + name);
+
+        List<Restaurant> restaurantList = restaurantEntityService.getRestaurantsByNameContaining(name);
+
+        if(restaurantList.isEmpty()) {
+            throw new AppBusinessException(RestaurantErrorMessage.NO_RESTAURANTS_FOUND);
+        }
+
+        rabbitProducerService.sendInfoMessage("Retrieved " + restaurantList.size() + " restaurants with name like: " + name);
+
+        return RestaurantMapper.INSTANCE.convertToRestaurantDTOs(restaurantList);
+    }
 }

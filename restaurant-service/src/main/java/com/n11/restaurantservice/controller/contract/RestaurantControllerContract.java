@@ -14,4 +14,5 @@ public interface RestaurantControllerContract {
     RestaurantDTO update(String id, RestaurantUpdateRequest request);
     void delete(String id);
     RestaurantDTO updateRestaurantScore(String id, int newScore);
+    List<RestaurantDTO> getRestaurantsByNameContaining(String name);
 }

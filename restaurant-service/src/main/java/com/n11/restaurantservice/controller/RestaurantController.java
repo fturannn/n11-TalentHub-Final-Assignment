@@ -65,4 +65,10 @@ public class RestaurantController {
     public RestaurantDTO updateRestaurantScoreAccordingToUserReview(@PathVariable @NotBlank String id, @RequestBody @NotNull int newScore) {
         return restaurantControllerContract.updateRestaurantScore(id, newScore);
     }
+
+    @GetMapping("/restaurant-name-like/{name}")
+    public ResponseEntity<RestResponse<List<RestaurantDTO>>> getRestaurantsByNameContaining(@PathVariable @NotBlank String name) {
+        List<RestaurantDTO> restaurantDTOS = restaurantControllerContract.getRestaurantsByNameContaining(name);
+        return ResponseEntity.ok(RestResponse.of(restaurantDTOS));
+    }
 }
