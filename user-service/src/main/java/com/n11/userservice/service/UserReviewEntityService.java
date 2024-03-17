@@ -21,4 +21,8 @@ public class UserReviewEntityService extends BaseEntityService<UserReview, UserR
     public List<UserReview> findReviewsByUserId(Long id) {
         return getRepository().findByUserId(id);
     }
+
+    public List<UserReview> findReviewsByRestaurantId(String id) {
+        return getRepository().findByRestaurantId(id);
+    }
 }

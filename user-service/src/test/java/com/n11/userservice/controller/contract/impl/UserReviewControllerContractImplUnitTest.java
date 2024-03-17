@@ -302,4 +302,55 @@ class UserReviewControllerContractImplUnitTest {
                 () -> userReviewControllerContractImpl.getReviewsByUserId(id));
         assertEquals(UserReviewErrorMessage.REVIEW_NOT_FOUND, appBusinessException.getBaseErrorMessage());
     }
+
+    @Test
+    void shouldGetReviewsByRestaurantId() {
+        //given
+        String id = "7c7ac2ee-725b-450d-b379-b180ee003a5d";
+
+        UserReviewFaker userReviewFaker = new UserReviewFaker();
+        List<UserReview> userReviewList = userReviewFaker.userReviewList();
+
+        //when
+        Mockito.when(userReviewEntityService.findReviewsByRestaurantId(Mockito.anyString())).thenReturn(userReviewList);
+
+        List<UserReviewDTO> results = userReviewControllerContractImpl.getReviewsByRestaurantId(id);
+
+        //then
+        assertEquals(userReviewList.size(), results.size());
+
+        for(int i = 0; i < results.size(); i++) {
+            UserReview userReview = userReviewList.get(i);
+            UserReviewDTO result = results.get(i);
+
+            assertEquals(userReview.getId(), result.id());
+            assertEquals(userReview.getUser().getName(), result.userName());
+            assertEquals(userReview.getUser().getSurname(), result.userSurname());
+            assertEquals(userReview.getUser().getName() + " " + userReview.getUser().getSurname(), result.userFullName());
+            assertEquals(userReview.getRestaurantId(), result.restaurantId());
+            assertEquals(userReview.getText(), result.text());
+            assertEquals(userReview.getReviewDate(), result.reviewDate());
+            assertEquals(userReview.getScore(), result.score());
+        }
+
+        InOrder inOrder = Mockito.inOrder(userReviewEntityService);
+        inOrder.verify(userReviewEntityService).findReviewsByRestaurantId(id);
+        inOrder.verifyNoMoreInteractions();
+    }
+
+    @Test
+    void shouldNotGetReviewsByRestaurantIdWhenAnyReviewExists() {
+        //given
+        String id = "7c7ac2ee-725b-450d-b379-b180ee003a5d";
+
+        List<UserReview> userReviewList = new ArrayList<>();
+
+        //when
+        Mockito.when(userReviewEntityService.findReviewsByRestaurantId(Mockito.anyString())).thenReturn(userReviewList);
+
+        //then
+        AppBusinessException appBusinessException = assertThrows(AppBusinessException.class,
+                () -> userReviewControllerContractImpl.getReviewsByRestaurantId(id));
+        assertEquals(UserReviewErrorMessage.REVIEW_NOT_FOUND, appBusinessException.getBaseErrorMessage());
+    }
 }

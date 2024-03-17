@@ -4,8 +4,7 @@ import com.n11.restaurantservice.general.BaseErrorMessage;
 
 public enum RestaurantErrorMessage implements BaseErrorMessage {
     NO_RESTAURANTS_FOUND("No restaurants found!"),
-    DUPLICATE_RESTAURANT_NAME("There is a restaurant with the same name!"),
-    RESTAURANT_ALREADY_EXISTS("Restaurant already exists!");
+    DUPLICATE_RESTAURANT_NAME("There is a restaurant with the same name!");
 
     private final String message;
 

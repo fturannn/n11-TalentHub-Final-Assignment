@@ -90,6 +90,17 @@ class UserReviewControllerContractImplIntegrationTest extends BaseTest {
     }
 
     @Test
+    void shouldGetAllWhenNoReviewsAvailable() throws Exception{
+        List<UserReview> userReviewList = new ArrayList<>();
+
+        Mockito.when(userReviewEntityService.findAll()).thenReturn(userReviewList);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/api/v1/reviews"))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
     void shouldSave() throws Exception{
 
         String requestAsString = "{\n" +
@@ -213,6 +224,35 @@ class UserReviewControllerContractImplIntegrationTest extends BaseTest {
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/v1/reviews/with-user-id/{userId}", id))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    void shouldGetReviewsByRestaurantId() throws Exception{
+        String id = "7c7ac2ee-725b-450d-b379-b180ee003a5d";
+        UserReviewFaker userReviewFaker = new UserReviewFaker();
+        List<UserReview> userReviewList = userReviewFaker.userReviewList();
+
+        Mockito.when(userReviewEntityService.findReviewsByRestaurantId(Mockito.anyString())).thenReturn(userReviewList);
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/api/v1/reviews/with-restaurant-id/{userId}", id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        boolean success = isSuccess(mvcResult);
+        assertTrue(success);
+    }
+
+    @Test
+    void shouldNotGetReviewsByRestaurantIdWhenAnyReviewExists() throws Exception{
+        String id = "7c7ac2ee-725b-450d-b379-b180ee003a5d";
+        List<UserReview> userReviewList = new ArrayList<>();
+
+        Mockito.when(userReviewEntityService.findReviewsByRestaurantId(Mockito.anyString())).thenReturn(userReviewList);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/api/v1/reviews/with-restaurant-id/{userId}", id))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 }

@@ -63,4 +63,24 @@ class UserReviewEntityServiceUnitTest {
         inOrder.verify(userReviewRepository).findByUserId(userId);
         inOrder.verifyNoMoreInteractions();
     }
+
+    @Test
+    void shouldFindReviewsByRestaurantId() {
+        //given
+        String restaurantId = "7c7ac2ee-725b-450d-b379-b180ee003a5d";
+        UserReviewFaker userReviewFaker = new UserReviewFaker();
+        List<UserReview> userReviewList = userReviewFaker.userReviewList();
+
+        //when
+        Mockito.when(userReviewRepository.findByRestaurantId(Mockito.anyString())).thenReturn(userReviewList);
+
+        List<UserReview> results = userReviewEntityService.findReviewsByRestaurantId(restaurantId);
+
+        //then
+        assertEquals(userReviewList, results);
+
+        InOrder inOrder = Mockito.inOrder(userReviewRepository);
+        inOrder.verify(userReviewRepository).findByRestaurantId(restaurantId);
+        inOrder.verifyNoMoreInteractions();
+    }
 }

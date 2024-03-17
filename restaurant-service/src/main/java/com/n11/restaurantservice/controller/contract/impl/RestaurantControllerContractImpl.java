@@ -59,12 +59,9 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
         Restaurant restaurant = RestaurantMapper.INSTANCE.convertToRestaurant(request);
 
         Optional<Restaurant> isRestaurantNameExist = restaurantEntityService.getRestaurantByName(request.name());
-        Optional<Restaurant> isRestaurantExist = restaurantEntityService.getRestaurantByEmail(request.email());
 
         if(isRestaurantNameExist.isPresent()) {
             throw new AppBusinessException(RestaurantErrorMessage.DUPLICATE_RESTAURANT_NAME);
-        } else if(isRestaurantExist.isPresent()) {
-            throw new AppBusinessException(RestaurantErrorMessage.RESTAURANT_ALREADY_EXISTS);
         }
 
         restaurant.setTotalReviewNumber(0L);

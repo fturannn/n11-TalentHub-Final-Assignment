@@ -2,7 +2,9 @@ package com.n11.userservice.controller;
 
 import com.n11.userservice.controller.contract.UserReviewControllerContract;
 import com.n11.userservice.dto.UserReviewDTO;
+import com.n11.userservice.entity.UserReview;
 import com.n11.userservice.faker.UserReviewDTOFaker;
+import com.n11.userservice.faker.UserReviewFaker;
 import com.n11.userservice.faker.UserReviewSaveRequestFaker;
 import com.n11.userservice.faker.UserReviewUpdateRequestFaker;
 import com.n11.userservice.general.RestResponse;
@@ -248,6 +250,42 @@ class UserReviewControllerUnitTest {
 
         InOrder inOrder = Mockito.inOrder(userReviewControllerContract);
         inOrder.verify(userReviewControllerContract).getReviewsByUserId(userId);
+        inOrder.verifyNoMoreInteractions();
+    }
+
+    @Test
+    void shouldGetReviewsByRestaurantId() {
+        //given
+        String restaurantId = "7c7ac2ee-725b-450d-b379-b180ee003a5d";
+
+        UserReviewDTOFaker userReviewDTOFaker = new UserReviewDTOFaker();
+        List<UserReviewDTO> userReviewDTOList = userReviewDTOFaker.userReviewDTOList();
+
+        //when
+        Mockito.when(userReviewControllerContract.getReviewsByRestaurantId(Mockito.anyString())).thenReturn(userReviewDTOList);
+
+        ResponseEntity<RestResponse<List<UserReviewDTO>>> response = userReviewController.getReviewsByRestaurantId(restaurantId);
+        List<UserReviewDTO> results = response.getBody().getData();
+
+        //then
+        assertEquals(userReviewDTOList.size(), results.size());
+
+        for(int i = 0; i < results.size(); i++) {
+            UserReviewDTO UserReviewDTO = userReviewDTOList.get(i);
+            UserReviewDTO result = results.get(i);
+
+            assertEquals(UserReviewDTO.id(), result.id());
+            assertEquals(UserReviewDTO.userName(), result.userName());
+            assertEquals(UserReviewDTO.userSurname(), result.userSurname());
+            assertEquals(UserReviewDTO.userFullName(), result.userFullName());
+            assertEquals(UserReviewDTO.restaurantId(), result.restaurantId());
+            assertEquals(UserReviewDTO.text(), result.text());
+            assertEquals(UserReviewDTO.reviewDate(), result.reviewDate());
+            assertEquals(UserReviewDTO.score(), result.score());
+        }
+
+        InOrder inOrder = Mockito.inOrder(userReviewControllerContract);
+        inOrder.verify(userReviewControllerContract).getReviewsByRestaurantId(restaurantId);
         inOrder.verifyNoMoreInteractions();
     }
 }

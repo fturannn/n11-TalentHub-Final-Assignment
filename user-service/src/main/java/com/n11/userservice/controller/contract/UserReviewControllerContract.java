@@ -15,4 +15,5 @@ public interface UserReviewControllerContract {
     void delete(Long id);
     List<UserReviewDTO> getReviewsByUserName(String name);
     List<UserReviewDTO> getReviewsByUserId(Long id);
+    List<UserReviewDTO> getReviewsByRestaurantId(String id);
 }

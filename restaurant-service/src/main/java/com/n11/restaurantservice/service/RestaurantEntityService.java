@@ -16,8 +16,4 @@ public class RestaurantEntityService extends BaseEntityService<Restaurant, Resta
     public Optional<Restaurant> getRestaurantByName(String name) {
         return getRepository().findByName(name);
     }
-
-    public Optional<Restaurant> getRestaurantByEmail(String email) {
-        return getRepository().findByEmail(email);
-    }
 }

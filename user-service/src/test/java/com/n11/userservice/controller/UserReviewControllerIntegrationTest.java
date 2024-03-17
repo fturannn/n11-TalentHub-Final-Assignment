@@ -27,6 +27,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -168,6 +169,23 @@ class UserReviewControllerIntegrationTest extends BaseTest {
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/v1/reviews/with-user-id/{userId}", id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        boolean success = isSuccess(mvcResult);
+        assertTrue(success);
+    }
+
+    @Test
+    void shouldGetReviewsByRestaurantId() throws Exception{
+        String id = "7c7ac2ee-725b-450d-b379-b180ee003a5d";
+        UserReviewDTOFaker userReviewDTOFaker = new UserReviewDTOFaker();
+        List<UserReviewDTO> userReviewDTOList = userReviewDTOFaker.userReviewDTOList();
+
+        Mockito.when(userReviewControllerContract.getReviewsByRestaurantId(Mockito.anyString())).thenReturn(userReviewDTOList);
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/api/v1/reviews/with-restaurant-id/{userId}", id))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 

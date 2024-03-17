@@ -4,6 +4,7 @@ import com.n11.userservice.general.BaseErrorMessage;
 
 public enum UserReviewErrorMessage implements BaseErrorMessage {
     REVIEW_NOT_FOUND("Review not found!"),
+    NO_REVIEWS_AVAILABLE("No reviews available!"),
     ;
 
     private final String message;

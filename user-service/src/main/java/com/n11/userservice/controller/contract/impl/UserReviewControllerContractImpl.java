@@ -44,6 +44,10 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
 
         List<UserReview> userReviewList = userReviewEntityService.findAll();
 
+        if(userReviewList.isEmpty()) {
+            throw new AppBusinessException(UserReviewErrorMessage.NO_REVIEWS_AVAILABLE);
+        }
+
         rabbitProducerService.sendInfoMessage("Retrieved " + userReviewList.size() + " user reviews");
 
         return UserReviewMapper.INSTANCE.convertToUserReviewDTOs(userReviewList);
@@ -105,6 +109,7 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
         }
 
         rabbitProducerService.sendInfoMessage("Retrieved " + userReviews.size() + " reviews by user name: " + name);
+
         return UserReviewMapper.INSTANCE.convertToUserReviewDTOs(userReviews);
     }
 
@@ -123,4 +128,18 @@ public class UserReviewControllerContractImpl implements UserReviewControllerCon
         return UserReviewMapper.INSTANCE.convertToUserReviewDTOs(userReviews);
     }
 
+    @Override
+    public List<UserReviewDTO> getReviewsByRestaurantId(String id) {
+        rabbitProducerService.sendInfoMessage("Getting user reviews by restaurant ID: " + id);
+
+        List<UserReview> userReviews = userReviewEntityService.findReviewsByRestaurantId(id);
+
+        if(userReviews.isEmpty()) {
+            throw new AppBusinessException(UserReviewErrorMessage.REVIEW_NOT_FOUND);
+        }
+
+        rabbitProducerService.sendInfoMessage("Retrieved " + userReviews.size() + " reviews by restaurant ID: " + id);
+
+        return UserReviewMapper.INSTANCE.convertToUserReviewDTOs(userReviews);
+    }
 }

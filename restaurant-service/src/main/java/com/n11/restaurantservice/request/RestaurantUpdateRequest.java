@@ -5,12 +5,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalTime;
-import java.util.List;
 
 public record RestaurantUpdateRequest(@NotBlank String id,
                                       @NotBlank String name,
                                       @Size(max = 11, min = 11) String phoneNumber,
-                                      @Email @NotBlank String email,
+                                      @Email String email,
                                       @NotBlank String country,
                                       @NotBlank String city,
                                       @NotBlank String district,

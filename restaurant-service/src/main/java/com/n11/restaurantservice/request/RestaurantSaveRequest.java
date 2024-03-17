@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 public record RestaurantSaveRequest(@NotBlank @Size(min = 1, max = 100) String name,
                                     @Size(min = 11, max = 11) String phoneNumber,
-                                    @Email @NotBlank String email,
+                                    @Email String email,
                                     @NotBlank String country,
                                     @NotBlank String city,
                                     @NotBlank String district,

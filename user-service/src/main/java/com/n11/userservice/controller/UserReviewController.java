@@ -74,4 +74,11 @@ public class UserReviewController {
         List<UserReviewDTO> userReviewDTOS = userReviewControllerContract.getReviewsByUserId(userId);
         return ResponseEntity.ok(RestResponse.of(userReviewDTOS));
     }
+
+    @GetMapping("/with-restaurant-id/{restaurantId}")
+    @Operation(summary = "Get reviews by restaurant ID", description = "Get a list of user reviews by restaurant ID")
+    public ResponseEntity<RestResponse<List<UserReviewDTO>>> getReviewsByRestaurantId(@PathVariable @NotBlank String restaurantId) {
+        List<UserReviewDTO> userReviewDTOS = userReviewControllerContract.getReviewsByRestaurantId(restaurantId);
+        return ResponseEntity.ok(RestResponse.of(userReviewDTOS));
+    }
 }

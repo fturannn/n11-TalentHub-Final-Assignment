@@ -8,6 +8,4 @@ import java.util.Optional;
 public interface RestaurantRepository extends SolrCrudRepository<Restaurant, String> {
 
     Optional<Restaurant> findByName(String name);
-
-    Optional<Restaurant> findByEmail(String email);
 }
