@@ -10,7 +10,11 @@ public class RabbitProducerService {
 
     private final RabbitTemplate rabbitTemplate;
 
-    public void sendMessage(String message) {
-        rabbitTemplate.convertAndSend("exchangeName", "routingKey", message);
+    public void sendErrorMessage(String message) {
+        rabbitTemplate.convertAndSend("exchange", "errorRouting", message);
+    }
+
+    public void sendInfoMessage(String message) {
+        rabbitTemplate.convertAndSend("exchange", "infoRouting", message);
     }
 }

@@ -17,33 +17,28 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     @Bean
-    public Queue queue() {
-        return new Queue("queueName", false);
+    public Queue errorQueue() {
+        return new Queue("errorQueue", false);
     }
 
     @Bean
     public DirectExchange exchange() {
-        return new DirectExchange("exchangeName");
+        return new DirectExchange("exchange");
     }
 
     @Bean
-    public Binding binding() {
-        return BindingBuilder.bind(queue()).to(exchange()).with("routingKey");
+    public Binding errorBinding() {
+        return BindingBuilder.bind(errorQueue()).to(exchange()).with("errorRouting");
     }
 
     @Bean
-    public Queue dlq() {
-        return new Queue("dlq.queueName", false);
+    public Queue infoQueue() {
+        return new Queue("infoQueue", false);
     }
 
     @Bean
-    public DirectExchange dlx() {
-        return new DirectExchange("dlx.exchangeName");
-    }
-
-    @Bean
-    public Binding bindingDlq() {
-        return BindingBuilder.bind(dlq()).to(dlx()).with("dlq.routingKey");
+    public Binding infoBinding() {
+        return BindingBuilder.bind(infoQueue()).to(exchange()).with("infoRouting");
     }
 
     @Bean

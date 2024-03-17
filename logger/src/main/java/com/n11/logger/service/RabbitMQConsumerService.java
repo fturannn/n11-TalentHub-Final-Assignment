@@ -1,7 +1,7 @@
 package com.n11.logger.service;
 
-import com.n11.logger.entity.ErrorLog;
-import com.n11.logger.repository.ErrorLogRepository;
+import com.n11.logger.entity.Log;
+import com.n11.logger.repository.LogRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -16,21 +16,36 @@ import java.time.LocalDateTime;
 public class RabbitMQConsumerService {
 
     private final RabbitTemplate rabbitTemplate;
-    private final ErrorLogRepository errorLogRepository;
+    private final LogRepository logRepository;
 
-    @RabbitListener(queues = "queueName")
-    public void consume(String message){
+    @RabbitListener(queues = "errorQueue")
+    public void consumeError(String message){
 
-        log.info("consume started!");
+        log.info("Error consume started!");
 
-        ErrorLog errorLog = new ErrorLog();
+        Log errorLog = new Log();
         errorLog.setDate(LocalDateTime.now());
         errorLog.setMessage(message);
         errorLog.setDescription("Error");
 
-        errorLogRepository.save(errorLog);
+        logRepository.save(errorLog);
 
-        log.info("consume finished!");
+        log.info("Error consume finished!");
+    }
+
+    @RabbitListener(queues = "infoQueue")
+    public void consumeInfo(String message){
+
+        log.info("Info consume started!");
+
+        Log infoLog = new Log();
+        infoLog.setDate(LocalDateTime.now());
+        infoLog.setMessage(message);
+        infoLog.setDescription("Info");
+
+        logRepository.save(infoLog);
+
+        log.info("Info consume finished!");
     }
 
 }

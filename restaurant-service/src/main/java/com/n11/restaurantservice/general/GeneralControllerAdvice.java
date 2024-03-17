@@ -33,7 +33,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         var generalErrorMessageFormat = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
         var restResponse = RestResponse.error(generalErrorMessageFormat);
 
-        rabbitProducerService.sendMessage(message);
+        rabbitProducerService.sendErrorMessage(message);
 
         return new ResponseEntity<>(restResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -47,7 +47,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         var generalErrorMessageFormat = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
         var restResponse = RestResponse.error(generalErrorMessageFormat);
 
-        rabbitProducerService.sendMessage(message);
+        rabbitProducerService.sendErrorMessage(message);
 
         return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
     }
@@ -61,7 +61,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         var generalErrorMessageFormat = new GeneralErrorMessageFormat(LocalDateTime.now(), message, description);
         var restResponse = RestResponse.error(generalErrorMessageFormat);
 
-        rabbitProducerService.sendMessage(message);
+        rabbitProducerService.sendErrorMessage(message);
 
         return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
     }
@@ -82,7 +82,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
         var generalErrorMessageFormat = new GeneralErrorMessageFormat(LocalDateTime.now(), errorList.toString(), description);
         var restResponse = RestResponse.error(generalErrorMessageFormat);
 
-        rabbitProducerService.sendMessage(errorList.toString());
+        rabbitProducerService.sendErrorMessage(errorList.toString());
 
         return new ResponseEntity<>(restResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
