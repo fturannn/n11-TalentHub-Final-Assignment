@@ -1,6 +1,18 @@
 # n11-TalentHub-Final-Assignment
 n11 TalentHub Spring Boot Bootcamp Final Project
 
+### Deployment Steps:
+
+1- Ensure that Docker is installed on your system.
+
+2- Clone the project repository from GitHub.
+
+3- Navigate to the project directory in your terminal.
+
+5- Run docker-compose up command to start the Docker containers.
+
+6- Once the containers are up and running, access the application using the specified endpoints.
+
 ## Features:
 
 ### User Management:
@@ -32,13 +44,22 @@ Closer restaurants are evaluated based on distance weight (%30), while restauran
 ### Communication with Restaurant Service:
 
 Feign client is utilized to establish communication with the Restaurant service.
+
 The Feign client allows seamless integration with the Restaurant service to retrieve restaurant information and recommendations.
 
 ### Logging and Error Handling:
 
 Errors and information logs generated within the services are captured.
+
 Captured logs are persisted into a PostgreSQL database using RabbitMQ message broker.
+
 This allows for effective monitoring, troubleshooting, and analysis of system behavior.
+
+### Dockerized Deployment:
+
+The application can be deployed easily using Docker Compose.
+
+Docker Compose orchestrates the deployment of all necessary services, ensuring seamless setup and execution.
 
 ### Technologies:
 
@@ -55,6 +76,8 @@ This allows for effective monitoring, troubleshooting, and analysis of system be
 - Logging mechanism and Exception handling are integrated to enhance system reliability.
 
 - RabbitMQ message broker is used for logging and error handling, with logs persisted into a PostgreSQL database.
+
+- Docker Compose is employed for easy deployment and management of the application.
 
 ### The project encompasses the following endpoints:
 
