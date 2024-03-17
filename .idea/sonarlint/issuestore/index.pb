@@ -81,3 +81,7 @@ J
 restaurant-service/pom.xml,f/1/f1a73488b9e5d5fe78f637b81387a1a03077be0d
 M
 restaurant-service/Dockerfile,8/6/86381f2e345e9b901a5c560a6be6302fd1c1ae49
+G
+user-service/Dockerfile,0/f/0f01b412d90efb467f3714ee012c2a826ca7ea8e
+A
+logger/Dockerfile,b/e/beee2ccbcaeba267679ae022fb2477c8471e6880
